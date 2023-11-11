@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Image;
 
 class CategoryController extends Controller
 {
@@ -24,19 +25,51 @@ class CategoryController extends Controller
 
     function storeCategory(Request $request){
 
-        $validated = $request->validate([
-            'name' => 'required|unique:categories',
-            'mytextarea' => 'required',
+        $image = $request->file('category_image');
+
+        //dd($image);
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(300,300)->save('upload/category/'.$name_gen);
+        $save_url = 'upload/category/'.$name_gen;
+
+        Category::insert([
+            'category_name' => $request->category_name,
+            'category_slug' => strtolower(str_replace(' ', '-',$request->category_name)),
+            'category_image' => $save_url, 
         ]);
 
-        $categories = new Category();
-        $categories->name= $request->name;
-        $categories->description= $request->mytextarea;
+        //dd($save_url);
 
-        $categories->save();
-      //dd($categories);
-        return redirect(route('all.category'))->with('msg','category added successfully');
+       $notification = array(
+            'message' => 'Caategory Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.category')->with($notification); 
+
+
     }// end method
+
+
+
+    public function DeleteCategory($id){
+        $category = Category::findOrFail($id);
+        $img = $category->category_image;
+        unlink($img ); 
+
+        Category::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Category Deleted Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification); 
+
+    }// End Method 
+
+
+
+
 
     
 

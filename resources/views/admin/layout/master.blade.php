@@ -25,7 +25,15 @@
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css')}}" />
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css')}}" />
 
+	<link href="{{ asset('backend/assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
+
+	<!-- input tag -->
+	<link href="{{ asset('backend/assets/plugins/input-tags/css/tagsinput.css')}}" rel="stylesheet" />
+
 	{{-- LINE AWSOME --}}
+	<!-- toaster message -->
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -82,6 +90,7 @@
 	<script src="{{ asset('backend/assets/js/bootstrap.bundle.min.js')}}"></script>
 	<!--plugins-->
 	<script src="{{ asset('backend/assets/js/jquery.min.js')}}"></script>
+	<script src="{{  asset('backend/assets/js/validate.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
 	<script src="{{ asset('backend/assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
 	<script src="{{ asset('backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
@@ -97,6 +106,62 @@
 	</script> 
 	<script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
 	<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
+
+    <!-- validation -->
+	<script src="{{ asset('backend/js/validate.min.js') }}"></script>
+
+	<script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js')}}"></script>
+
+	<!-- sweet alert -->
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	<script src="{{ asset('backend/assets/js/code.js') }}"></script>
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	
+	<script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+	</script>
+
+	<script>
+		tinymce.init({
+		  selector: '#mytextarea'
+		});
+	</script>
+	
+
+
+
+
+
+
+
+	<script>
+	@if(Session::has('message'))
+	var type = "{{ Session::get('alert-type','info') }}"
+	switch(type){
+		case 'info':
+		toastr.info(" {{ Session::get('message') }} ");
+		break;
+		case 'success':
+		toastr.success(" {{ Session::get('message') }} ");
+		break;
+		case 'warning':
+		toastr.warning(" {{ Session::get('message') }} ");
+		break;
+		case 'error':
+		toastr.error(" {{ Session::get('message') }} ");
+		break; 
+	}
+	@endif 
+	</script>
+
+
+
+
+
+
 	<script>
 		$(document).ready(function() {
 			$('#example').DataTable();

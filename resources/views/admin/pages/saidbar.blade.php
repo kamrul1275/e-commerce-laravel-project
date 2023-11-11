@@ -19,6 +19,31 @@
             </a>
             
         </li>
+
+
+
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                </div>
+                <div class="menu-title">Brand</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route ('create.brand') }}"><i class="bx bx-right-arrow-alt"></i>Create Brand</a>
+                </li>
+                <li> <a href="{{ route ('all.brand') }}"><i class="bx bx-right-arrow-alt"></i>All Brand</a>
+                </li>
+            
+            
+            </ul>
+        </li>
+
+
+
+
+
+
+
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -33,17 +58,7 @@
                 </li>
             </ul>
         </li>
-
-        {{-- not need --}}
-        <li class="menu-label">UI Elements</li>
-        <li>
-            <a href="widgets.html">
-                <div class="parent-icon"><i class='bx bx-cookie'></i>
-                </div>
-                <div class="menu-title">SubCategory</div>
-            </a>
-        </li>
-
+ 
 
 
         <li>
@@ -59,33 +74,17 @@
                
             </ul>
         </li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
-                </div>
-                <div class="menu-title">Brand</div>
-            </a>
-            <ul>
-                <li> <a href="component-alerts.html"><i class="bx bx-right-arrow-alt"></i>Alerts</a>
-                </li>
-                <li> <a href="component-accordions.html"><i class="bx bx-right-arrow-alt"></i>Accordions</a>
-                </li>
-                <li> <a href="component-badges.html"><i class="bx bx-right-arrow-alt"></i>Badges</a>
-            
-            </ul>
-        </li>
+       
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-repeat"></i>
                 </div>
-                <div class="menu-title">Content</div>
+                <div class="menu-title">Product</div>
             </a>
             <ul>
-                <li> <a href="content-grid-system.html"><i class="bx bx-right-arrow-alt"></i>Grid System</a>
+                <li> <a href="{{route('create.product') }}"><i class="bx bx-right-arrow-alt"></i>Create Product</a>
                 </li>
-                <li> <a href="content-typography.html"><i class="bx bx-right-arrow-alt"></i>Typography</a>
-                </li>
-                <li> <a href="content-text-utilities.html"><i class="bx bx-right-arrow-alt"></i>Text Utilities</a>
+                <li> <a href="{{route('all.product') }}"><i class="bx bx-right-arrow-alt"></i>All Product</a>
                 </li>
             </ul>
         </li>

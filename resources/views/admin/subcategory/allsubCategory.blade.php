@@ -17,16 +17,16 @@
 						</nav>
 					</div>
 					<div class="ms-auto">
-						<div class="btn-group">
-							<button type="button" class="btn btn-primary">Settings</button>
-							<button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
-							</button>
+						<!-- <div class="btn-group">
 							
-								<a class="dropdown-item" href="javascript:;">Create SubCategory</a>
+					
+		
+								<a class="dropdown-item" class="btn btn-primary" href="javascript:;">Create SubCategory</a>
 								
 								
 							</div>
-						</div>
+						</div> -->
+						<a  class="btn btn-info" href="">Create SubCategory</a>
 					</div>
 				</div>
 				<!--end breadcrumb-->
@@ -41,10 +41,8 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>Name</th>
                                         <th>Category Name</th>
-										<th>Description</th>
-										<th>Start date</th>
+										<th>SubCategory Name</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -53,43 +51,72 @@
 
 				<tr>
 					<td>{{ $key+1}}</td>
-					<td>{{$subcategory->name}}</td>
-                    <td>{{$subcategory->Category->name}}</td>
-					<td>{!! $subcategory->description !!}</td>
-					<td>{{$subcategory->created_at->format('d-m-Y') }}</td>
+					<td>{{$subcategory->Category->category_name}}</td>
+					<td>{{$subcategory->subcategory_name}}</td>
+					
+					
+                   
 					<td>
 						
 				<a href="" class="btn btn-success"><i class="las la-edit"></i></a>
-				<a href="" class="btn btn-danger"><i class="las la-trash"></i></a>
+				<a href="" id="delete" class="btn btn-danger"><i class="las la-trash"></i></a>
 
 					</td>
 					
 				</tr>
 					
 				@endforeach
-
-
-
-
-								
-						
 								
 								</tbody>
 								<tfoot>
-									<tr>
+								     <tr>
 										<th>ID</th>
-										<th>Name</th>
+										<th>SubCategory Name</th>
                                         <th>Category Name</th>
-										<th>Description</th>
-										<th>Start date</th>
 										<th>Action</th>
-									</tr>
+									 </tr>
 								</tfoot>
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+
+
+
+<script src="">
+
+	
+$(function(){
+    $(document).on('click','#delete',function(e){
+        e.preventDefault();
+         var link = $(this).attr("href");
+
+                  Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Delete This Data?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                    window.location.href = link
+                      Swal.fire(
+                     'Deleted!',
+                     'Your file has been deleted.',
+                     'success'
+                      )
+                    }
+                  }) 
+              });
+
+            });
+
+
+</script>
+
 
 
                     

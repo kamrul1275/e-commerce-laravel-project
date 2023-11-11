@@ -53,8 +53,7 @@
 									<tr>
 										<th>ID</th>
 										<th>Name</th>
-										<th>Description</th>
-										<th>Start date</th>
+										<th>Image</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -63,13 +62,13 @@
 
 				<tr>
 					<td>{{ $key+1}}</td>
-					<td>{{$category->name}}</td>
-					<td>{!! $category->description !!}</td>
-					<td>{{$category->created_at->format('d-m-Y') }}</td>
+					<td>{{$category->category_name}}</td>
+					<td>  <img src="{{ asset($category->category_image) }}" style="width: 70px; height:40px;" >  </td>
+					
 					<td>
 						
 				<a href="" class="btn btn-success"><i class="las la-edit"></i></a>
-				<a href="" class="btn btn-danger"><i class="las la-trash"></i></a>
+				<a href="{{url('/category/delete/'.$category->id)}}" id="delete" class="btn btn-danger"><i class="las la-trash"></i></a>
 
 					</td>
 					
@@ -86,10 +85,9 @@
 								</tbody>
 								<tfoot>
 									<tr>
-										<th>ID</th>
+									    <th>ID</th>
 										<th>Name</th>
-										<th>Description</th>
-										<th>Start date</th>
+										<th>Image</th>
 										<th>Action</th>
 									</tr>
 								</tfoot>
@@ -100,6 +98,38 @@
 			</div>
 
 
+<script src="">
+
+	
+$(function(){
+    $(document).on('click','#delete',function(e){
+        e.preventDefault();
+         var link = $(this).attr("href");
+
+                  Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Delete This Data?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                    window.location.href = link
+                      Swal.fire(
+                     'Deleted!',
+                     'Your file has been deleted.',
+                     'success'
+                      )
+                    }
+                  }) 
+              });
+
+            });
+
+
+</script>
                     
 
 @endsection
