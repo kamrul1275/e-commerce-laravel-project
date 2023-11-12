@@ -100,6 +100,6 @@ Route::get('/brand/delete/{id}',[BrandController::class,'DeleteBrand'])->name('d
 
 // Product Part
 Route::get('/product/create',[ProductController::class,'createProduct'])->name('create.product');
-//Route::post('/product/store',[ProductController::class,'storeProduct'])->name('store.brand');
+Route::post('/product/store',[ProductController::class,'storeProduct'])->name('store.product');
 
 Route::get('/product/all',[ProductController::class,'allProduct'])->name('all.product');

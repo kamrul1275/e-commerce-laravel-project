@@ -44,18 +44,50 @@
 						<div class="table-responsive">
 							<table id="example2" class="table table-striped table-bordered">
 								<thead>
+
 									<tr>
 										<th>ID</th>
-										<th>Name</th>
+										<th>Product_Name</th>
+										<th>tags</th>
+										<th>Size</th>
+										<th>Color</th>
+										<th>short_descp</th>
+										<th>Selling_Price</th>
+										<th>Dis_Price</th>
+										<th>Brand</th>
+										<th>Category</th>
 										<th>Image</th>
 										<th>Action</th>
 									</tr>
+									
 								</thead>
 								<tbody>
 			
 
 
+									@foreach ($products as $product)
+									<tr>
+										<td>ID</td>
+										<td>{{$product->product_name}}</td>
+										<td>{{$product->product_tags}}</td>
+										<td>{{$product->product_size}}</td>
+										<td>{{$product->product_color}}</td>
+										<td>{{$product->short_descp}}</td>
+										<td>{{$product->selling_price}}</td>
+										<td>{{$product->discount_price}}</td>
+										<td>{{$product->brand_id}}</td>
+										<td>{{$product->category_id}}</td>
+										<td><img src="{{asset($product->product_thambnail)}}" style="width: 60; height:40px;" alt=""></td>
+										<td>
 
+		
+											<a href="" class="btn btn-success"><i class="las la-edit"></i></a>
+											<a href="" id="delete" class="btn btn-danger"><i class="las la-trash"></i></a>
+
+
+										</td>
+									</tr>
+									@endforeach
 
 								
 						
@@ -63,8 +95,16 @@
 								</tbody>
 								<tfoot>
 									<tr>
-									    <th>ID</th>
-										<th>Name</th>
+										<th>ID</th>
+										<th>Product_Name</th>
+										<th>tags</th>
+										<th>Size</th>
+										<th>Color</th>
+										<th>short_descp</th>
+										<th>Selling_Price</th>
+										<th>Dis_Price</th>
+										<th>Brand</th>
+										<th>Category</th>
 										<th>Image</th>
 										<th>Action</th>
 									</tr>

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Models\multi_img;
 
 class Product extends Model
 {
@@ -31,6 +32,14 @@ class Product extends Model
     function SubCategory(){
 
         return $this->hasMany(SubCategory::class);
+     }//end method
+
+
+    //  multi image
+
+    function MultiImage(){
+
+        return $this->belongsTo(multi_img::class);
      }//end method
 
 

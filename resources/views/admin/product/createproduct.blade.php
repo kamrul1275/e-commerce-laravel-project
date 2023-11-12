@@ -28,8 +28,8 @@
               <div class="card">
 				  <div class="card-body p-4">
 
-					  <form id="myForm" method="post" action="" enctype="multipart/form-data" >
-
+					  <form id="myForm" method="post" action="{{ route('store.product')}}" enctype="multipart/form-data" >
+                         @csrf
                        <div class="form-body mt-4">
 					    <div class="row">
 						   <div class="col-lg-8">
@@ -60,7 +60,7 @@
 
 							  <div class="mb-3">
 								<label for="inputProductDescription" class="form-label">Short Description</label>
-								<textarea class="form-control" name="short_description" id="inputProductDescription" rows="3"></textarea>
+								<textarea class="form-control" name="short_descp" id="inputProductDescription" rows="3"></textarea>
 							   </div>
 
 							
@@ -107,14 +107,14 @@
 									<input type="text" class="form-control" name="product_code" id="inputStarPoints" placeholder="00.00">
 								  </div>
 								  <div class="col-12">
-									<label for="inputProductType" class="form-label">Brand</label>
+									<label for="inputProductType"  class="form-label">Brand</label>
                                   
 
-									<select class="form-select" id="inputProductType">
+									<select class="form-select" name="brand_id" id="inputProductType">
 										
 										
 									@foreach($brands as $brand)
-									<option>{{$brand->brand_name}}</option>
+									<option value="{{$brand->id }}">{{$brand->brand_name}}</option>
 									@endforeach
 									  </select>
 
@@ -297,12 +297,15 @@
                  product_thambnail: {
                     required : true,
                 }, 
-                 multi_img: {
+				multi_img: {
                     required : true,
                 }, 
                  selling_price: {
-                    required : true,
-                },                   
+                    required : true,  
+                },  
+				discount_price: {
+                    required : true, 
+                },                 
                  product_code: {
                     required : true,
                 }, 
@@ -334,6 +337,10 @@
                 },
                 selling_price: {
                     required : 'Please Enter Selling Price',
+                }, 
+
+				discount_price: {
+                    required : 'Please Enter Discount Price',
                 }, 
                 product_code: {
                     required : 'Please Enter Product Code',
