@@ -6,6 +6,7 @@ use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\SubCategory\SubCategoryController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,7 +37,9 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
+// 
 
+Route::get('/', [HomeController::class,'Index']);
 
 
 
@@ -103,3 +106,8 @@ Route::get('/product/create',[ProductController::class,'createProduct'])->name('
 Route::post('/product/store',[ProductController::class,'storeProduct'])->name('store.product');
 
 Route::get('/product/all',[ProductController::class,'allProduct'])->name('all.product');
+
+
+Route::get('/product/inactive/{id}',[ProductController::class,'ProductInactive'])->name('inactive.product');
+
+Route::get('/product/active/{id}',[ProductController::class,'ProductActive'])->name('active.product');

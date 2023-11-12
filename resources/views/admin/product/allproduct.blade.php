@@ -54,9 +54,9 @@
 										<th>short_descp</th>
 										<th>Selling_Price</th>
 										<th>Dis_Price</th>
-										<th>Brand</th>
-										<th>Category</th>
 										<th>Image</th>
+										<th>Category</th>
+										<th>Status</th>
 										<th>Action</th>
 									</tr>
 									
@@ -75,16 +75,34 @@
 										<td>{{$product->short_descp}}</td>
 										<td>{{$product->selling_price}}</td>
 										<td>{{$product->discount_price}}</td>
-										<td>{{$product->brand_id}}</td>
-										<td>{{$product->category_id}}</td>
+									
 										<td><img src="{{asset($product->product_thambnail)}}" style="width: 60; height:40px;" alt=""></td>
+
+										<td>{{$product->brand_id}}</td>
+										<td> 
+											 @if ($product->status== 1)
+											 <span class="badge round-pill bg-success">Active</span>
+										    @else
+										
+											<span class="badge round-pill bg-danger">Inactive</span>
+											@endif
+										</td>
 										<td>
 
 		
 											<a href="" class="btn btn-success"><i class="las la-edit"></i></a>
+											<a href="" class="btn btn-primary"><i class="las la-eye"></i></a>
 											<a href="" id="delete" class="btn btn-danger"><i class="las la-trash"></i></a>
 
+											@if ($product->status== 1)
+											<a href="{{url('/product/inactive/'.$product->id)}}"  class="btn btn-info" title="inactive"> <i class="las la-thumbs-down"></i></a>	
+											
+                                           @else
+											<a href="{{url('/product/inactive/'.$product->id)}}"  class="btn btn-info" title="active"> <i class="las la-thumbs-up"></i></a>
 
+
+
+											@endif
 										</td>
 									</tr>
 									@endforeach
@@ -103,9 +121,9 @@
 										<th>short_descp</th>
 										<th>Selling_Price</th>
 										<th>Dis_Price</th>
-										<th>Brand</th>
-										<th>Category</th>
 										<th>Image</th>
+										<th>Category</th>
+										<th>Status</th>
 										<th>Action</th>
 									</tr>
 								</tfoot>
